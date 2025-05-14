@@ -108,6 +108,24 @@
 			</ScaleRuler>
 			<CurrentLevel>1747209476595</CurrentLevel>
 			<ConnectionsId>1747209476590</ConnectionsId>
+			<Variables>
+				<Variable Class="StockVariable">
+					<Id>1747212920653</Id>
+					<Name><![CDATA[TEST]]></Name>
+					<X>110</X><Y>-990</Y>
+					<Label><X>0</X><Y>-20</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties Array="false">
+					<EquationStyle>classic</EquationStyle>
+					<Width>20</Width>
+					<Height>20</Height>
+						<InitialValue><![CDATA[10]]></InitialValue>
+						<Color/>
+					</Properties>
+				</Variable>
+			</Variables>
 			<AgentLinks>
 				<AgentLink>
 					<Id>1747209476590</Id>
