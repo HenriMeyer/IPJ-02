@@ -109,23 +109,265 @@
 			<CurrentLevel>1747209476595</CurrentLevel>
 			<ConnectionsId>1747209476590</ConnectionsId>
 			<Variables>
-				<Variable Class="StockVariable">
-					<Id>1747212920653</Id>
-					<Name><![CDATA[TEST]]></Name>
-					<X>110</X><Y>-990</Y>
+				<Variable Class="AuxVariable">
+					<Id>1747750949845</Id>
+					<Name><![CDATA[LängeProÜberdachung]]></Name>
+					<X>25</X><Y>50</Y>
+					<Label><X>-25</X><Y>-25</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties External="false" Constant="true" Array="false">
+						<Formula><![CDATA[0]]></Formula>
+						<Value><![CDATA[8]]></Value>
+						<Color/>
+					</Properties>
+
+				</Variable>
+				<Variable Class="AuxVariable">
+					<Id>1747750998941</Id>
+					<Name><![CDATA[BreiteProÜberdachung]]></Name>
+					<X>25</X><Y>100</Y>
+					<Label><X>-25</X><Y>20</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties External="false" Constant="true" Array="false">
+						<Formula><![CDATA[0]]></Formula>
+						<Value><![CDATA[3.5]]></Value>
+						<Color/>
+					</Properties>
+
+				</Variable>
+				<Variable Class="AuxVariable">
+					<Id>1747751034642</Id>
+					<Name><![CDATA[FlächeProÜberdachung]]></Name>
+					<X>175</X><Y>75</Y>
+					<Label><X>0</X><Y>-15</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties External="false" Constant="true" Array="false">
+						<Formula><![CDATA[Länge*Breite]]></Formula>
+						<Value><![CDATA[LängeProÜberdachung*BreiteProÜberdachung]]></Value>
+						<Color/>
+					</Properties>
+
+				</Variable>
+				<Variable Class="AuxVariable">
+					<Id>1747751352767</Id>
+					<Name><![CDATA[NutzebarePVFläche]]></Name>
+					<X>230</X><Y>190</Y>
+					<Label><X>-145</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties External="false" Constant="true" Array="false">
+						<Formula><![CDATA[FlächeProÜberdachung*FaktorPV]]></Formula>
+						<Value><![CDATA[FlächeProÜberdachung*FaktorPV*AnzahlLadepunkte]]></Value>
+						<Color/>
+					</Properties>
+
+				</Variable>
+				<Variable Class="AuxVariable">
+					<Id>1747751423458</Id>
+					<Name><![CDATA[FaktorPV]]></Name>
+					<Description><![CDATA[Dies ist Faktor für die nicht 100% Flächennutzung eines Daches.]]></Description>
+					<X>450</X><Y>80</Y>
 					<Label><X>0</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Properties Array="false">
-					<EquationStyle>classic</EquationStyle>
-					<Width>20</Width>
-					<Height>20</Height>
-						<InitialValue><![CDATA[10]]></InitialValue>
+					<Properties External="false" Constant="true" Array="false">
+						<Formula><![CDATA[0]]></Formula>
+						<Value><![CDATA[0.9]]></Value>
 						<Color/>
 					</Properties>
+
+				</Variable>
+				<Variable Class="AuxVariable">
+					<Id>1747751568221</Id>
+					<Name><![CDATA[AnzahlLadepunkte]]></Name>
+					<X>450</X><Y>140</Y>
+					<Label><X>0</X><Y>-20</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties External="false" Constant="false" Array="false">
+						<Formula><![CDATA[3]]></Formula>
+						<Value><![CDATA[0]]></Value>
+						<Color/>
+					</Properties>
+
+				</Variable>
+				<Variable Class="AuxVariable">
+					<Id>1747751705609</Id>
+					<Name><![CDATA[FlächeProModul]]></Name>
+					<X>150</X><Y>250</Y>
+					<Label><X>-125</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties External="false" Constant="true" Array="false">
+						<Formula><![CDATA[0]]></Formula>
+						<Value><![CDATA[1.66*0.99]]></Value>
+						<Color/>
+					</Properties>
+
+				</Variable>
+				<Variable Class="AuxVariable">
+					<Id>1747751781518</Id>
+					<Name><![CDATA[LeistungProModul]]></Name>
+					<X>150</X><Y>290</Y>
+					<Label><X>-125</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties External="false" Constant="true" Array="false">
+						<Formula><![CDATA[0]]></Formula>
+						<Value><![CDATA[280]]></Value>
+						<Color/>
+					</Properties>
+
+				</Variable>
+				<Variable Class="AuxVariable">
+					<Id>1747751809821</Id>
+					<Name><![CDATA[InstallierteLeistung]]></Name>
+					<X>250</X><Y>260</Y>
+					<Label><X>0</X><Y>-20</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties External="false" Constant="false" Array="false">
+						<Formula><![CDATA[NutzebarePVFläche/FlächeProModul*LeistungProModul]]></Formula>
+						<Value><![CDATA[0]]></Value>
+						<Color/>
+					</Properties>
+
 				</Variable>
 			</Variables>
+			<Dependences>
+				<Link SourceId="1747750949845" TargetId="1747751034642" Polarity="null">
+					<Height>14.544</Height>
+					<PolarityPosition>0.95</PolarityPosition>
+					<Direction><X>150</X><Y>25</Y></Direction>
+					<Id>1747751072189</Id>
+					<Name><![CDATA[LängeProÜberdachung - FlächeProÜberdachung]]></Name>
+					<X>25</X><Y>50</Y>
+					<Label><X>40</X><Y>-50</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Color/>
+					<LineWidth>1</LineWidth>
+					<Delay>false</Delay>
+				</Link>
+				<Link SourceId="1747750998941" TargetId="1747751034642" Polarity="null">
+					<Height>20.019</Height>
+					<PolarityPosition>0.95</PolarityPosition>
+					<Direction><X>150</X><Y>-25</Y></Direction>
+					<Id>1747751079002</Id>
+					<Name><![CDATA[BreiteProÜberdachung - FlächeProÜberdachung]]></Name>
+					<X>25</X><Y>100</Y>
+					<Label><X>40</X><Y>-50</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Color/>
+					<LineWidth>1</LineWidth>
+					<Delay>false</Delay>
+				</Link>
+				<Link SourceId="1747751034642" TargetId="1747751352767" Polarity="null">
+					<Height>-12.584</Height>
+					<PolarityPosition>0.95</PolarityPosition>
+					<Direction><X>55</X><Y>115</Y></Direction>
+					<Id>1747751374298</Id>
+					<Name><![CDATA[FlächeProÜberdachung - NutzebarePVFläche]]></Name>
+					<X>175</X><Y>75</Y>
+					<Label><X>40</X><Y>-50</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Color/>
+					<LineWidth>1</LineWidth>
+					<Delay>false</Delay>
+				</Link>
+				<Link SourceId="1747751423458" TargetId="1747751352767" Polarity="null">
+					<Height>-59.493</Height>
+					<PolarityPosition>0.95</PolarityPosition>
+					<Direction><X>-220</X><Y>110</Y></Direction>
+					<Id>1747751466105</Id>
+					<Name><![CDATA[FaktorPV - NutzebarePVFläche]]></Name>
+					<X>450</X><Y>80</Y>
+					<Label><X>40</X><Y>-50</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Color/>
+					<LineWidth>1</LineWidth>
+					<Delay>false</Delay>
+				</Link>
+				<Link SourceId="1747751568221" TargetId="1747751352767" Polarity="null">
+					<Height>-47.819</Height>
+					<PolarityPosition>0.95</PolarityPosition>
+					<Direction><X>-220</X><Y>50</Y></Direction>
+					<Id>1747751588308</Id>
+					<Name><![CDATA[AnzahlLadepunkte - NutzebarePVFläche]]></Name>
+					<X>450</X><Y>140</Y>
+					<Label><X>40</X><Y>-50</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Color/>
+					<LineWidth>1</LineWidth>
+					<Delay>false</Delay>
+				</Link>
+				<Link SourceId="1747751352767" TargetId="1747751809821" Polarity="null">
+					<Height>-15.251</Height>
+					<PolarityPosition>0.95</PolarityPosition>
+					<Direction><X>20</X><Y>70</Y></Direction>
+					<Id>1747751827951</Id>
+					<Name><![CDATA[NutzebarePVFläche - InstallierteLeistung]]></Name>
+					<X>230</X><Y>190</Y>
+					<Label><X>40</X><Y>-50</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Color/>
+					<LineWidth>1</LineWidth>
+					<Delay>false</Delay>
+				</Link>
+				<Link SourceId="1747751705609" TargetId="1747751809821" Polarity="null">
+					<Height>0.0</Height>
+					<PolarityPosition>0.95</PolarityPosition>
+					<Direction><X>100</X><Y>10</Y></Direction>
+					<Id>1747751834949</Id>
+					<Name><![CDATA[FlächeProModul - InstallierteLeistung]]></Name>
+					<X>150</X><Y>250</Y>
+					<Label><X>40</X><Y>-50</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Color/>
+					<LineWidth>1</LineWidth>
+					<Delay>false</Delay>
+				</Link>
+				<Link SourceId="1747751781518" TargetId="1747751809821" Polarity="null">
+					<Height>-9.337</Height>
+					<PolarityPosition>0.95</PolarityPosition>
+					<Direction><X>100</X><Y>-30</Y></Direction>
+					<Id>1747751839833</Id>
+					<Name><![CDATA[LeistungProModul - InstallierteLeistung]]></Name>
+					<X>150</X><Y>290</Y>
+					<Label><X>40</X><Y>-50</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Color/>
+					<LineWidth>1</LineWidth>
+					<Delay>false</Delay>
+				</Link>
+			</Dependences>
 			<AgentLinks>
 				<AgentLink>
 					<Id>1747209476590</Id>
@@ -177,7 +419,7 @@
 	<TimeAccuracy>1.0E-5</TimeAccuracy>
 	<Frame>
 		<Id>1747209476587</Id>
-		<Width>1000</Width>
+		<Width>1100</Width>
 		<Height>600</Height>
 	</Frame>
 	<Database>
