@@ -18,20 +18,6 @@
 		<ActiveObjectClass>
 			<Id>1747209476589</Id>
 			<Name><![CDATA[Main]]></Name>
-			<AdditionalClassCode><![CDATA[double[] pvWerte = new double[5475];
-double[] stromWerte = new double[5475];
-int currentDay = 1;]]></AdditionalClassCode>
-			<StartupCode><![CDATA[try {
-	for(int j = 0; j < 15; j++){
-	    for(int i = 0; i < 365; i++ ) {
-	        pvWerte[i+j*365] = excelFile.getCellNumericValue("Sheet1", i+2, 2);
-	        stromWerte[i+j*365] = excelFile1.getCellNumericValue("Sheet1", i+2, 2);
-	    }
-	 }
-} catch( Exception e ) {
-    trace("Fehler beim Laden der Excel-Daten: " + e.getMessage());
-}
-]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1747209476594</Id>
@@ -268,8 +254,7 @@ int currentDay = 1;]]></AdditionalClassCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties External="false" Constant="false" Array="false">
-						<Formula><![CDATA[Strompreis - (GesamtinvestitionPV + (GesamtWartungskostenPV * 15)) / (InstallierteLeistung * (823.7405223
- * 15))]]></Formula>
+						<Formula><![CDATA[Strompreis - (GesamtinvestitionPV + (GesamtWartungskostenPV * 15)) / (InstallierteLeistung * (824.3813136 * 15))]]></Formula>
 						<Value><![CDATA[0]]></Value>
 						<Color/>
 					</Properties>
@@ -431,14 +416,14 @@ int currentDay = 1;]]></AdditionalClassCode>
 				<Variable Class="AuxVariable">
 					<Id>1749025444127</Id>
 					<Name><![CDATA[Strompreis]]></Name>
-					<Description><![CDATA[(DayAhead + Marge + Netzentgelte +  Abgaben) * MwSt und in €/kWh]]></Description>
-					<X>360</X><Y>20</Y>
+					<Description><![CDATA[0,1 €/kWh]]></Description>
+					<X>340</X><Y>40</Y>
 					<Label><X>-20</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties External="false" Constant="false" Array="false">
-						<Formula><![CDATA[(stromWerte[currentDay] + 10 + 150 + 25)/1000*1.19]]></Formula>
+						<Formula><![CDATA[0.25]]></Formula>
 						<Value><![CDATA[0]]></Value>
 						<Color/>
 					</Properties>
@@ -453,7 +438,7 @@ int currentDay = 1;]]></AdditionalClassCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties External="false" Constant="false" Array="false">
-						<Formula><![CDATA[2*Strompreis]]></Formula>
+						<Formula><![CDATA[0.48]]></Formula>
 						<Value><![CDATA[0]]></Value>
 						<Color/>
 					</Properties>
@@ -536,7 +521,7 @@ int currentDay = 1;]]></AdditionalClassCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties TargetId="1747753006710" External="false" Constant="false" Array="false">
-						<Formula><![CDATA[InstallierteLeistung*(pvWerte[currentDay]/76001)]]></Formula>
+						<Formula><![CDATA[InstallierteLeistung*(824.3813136/365)]]></Formula>
 						<Color/>
 						<ValveIndex>1</ValveIndex>
 						<Points>
@@ -909,12 +894,12 @@ int currentDay = 1;]]></AdditionalClassCode>
 					<Delay>false</Delay>
 				</Link>
 				<Link SourceId="1749025444127" TargetId="1747753807441" Polarity="null">
-					<Height>-413.595</Height>
+					<Height>-438.31</Height>
 					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>-330</X><Y>600</Y></Direction>
+					<Direction><X>-310</X><Y>580</Y></Direction>
 					<Id>1749025487490</Id>
 					<Name><![CDATA[Strompreis - PreisProKWh]]></Name>
-					<X>360</X><Y>20</Y>
+					<X>340</X><Y>40</Y>
 					<Label><X>40</X><Y>-50</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -971,10 +956,10 @@ int currentDay = 1;]]></AdditionalClassCode>
 				<Link SourceId="1749025444127" TargetId="1747754568455" Polarity="null">
 					<Height>20.0</Height>
 					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>400</X><Y>340</Y></Direction>
+					<Direction><X>420</X><Y>320</Y></Direction>
 					<Id>1749026195411</Id>
 					<Name><![CDATA[Strompreis - PreisertragLadesäulen]]></Name>
-					<X>360</X><Y>20</Y>
+					<X>340</X><Y>40</Y>
 					<Label><X>40</X><Y>-50</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -984,7 +969,7 @@ int currentDay = 1;]]></AdditionalClassCode>
 					<Delay>false</Delay>
 				</Link>
 				<Link SourceId="1749026220221" TargetId="1747754568455" Polarity="null">
-					<Height>-24.912</Height>
+					<Height>20.0</Height>
 					<PolarityPosition>0.95</PolarityPosition>
 					<Direction><X>140</X><Y>300</Y></Direction>
 					<Id>1749026591081</Id>
@@ -998,92 +983,7 @@ int currentDay = 1;]]></AdditionalClassCode>
 					<LineWidth>1</LineWidth>
 					<Delay>false</Delay>
 				</Link>
-				<Link SourceId="1749025444127" TargetId="1749026220221" Polarity="null">
-					<Height>20.0</Height>
-					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>260</X><Y>40</Y></Direction>
-					<Id>1749632589205</Id>
-					<Name><![CDATA[Strompreis - Verkaufspreis]]></Name>
-					<X>360</X><Y>20</Y>
-					<Label><X>40</X><Y>-50</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<Color/>
-					<LineWidth>1</LineWidth>
-					<Delay>false</Delay>
-				</Link>
 			</Dependences>
-			<Events>
-				<Event>
-					<Id>1749625092086</Id>
-					<Name><![CDATA[event]]></Name>
-					<X>440</X><Y>840</Y>
-					<Label><X>10</X><Y>-20</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties TriggerType="timeout" Mode="cyclic">
-						<Timeout Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
-						</Timeout>
-						<Rate Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
-						</Rate>
-						<Id>1749625092084</Id>
-						<OccurrenceAtTime>true</OccurrenceAtTime>
-						<OccurrenceDate>1749628800000</OccurrenceDate>
-						<OccurrenceTime Class="CodeUnitValue">
-							<Code><![CDATA[0]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
-						</OccurrenceTime>
-						<RecurrenceCode Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
-						</RecurrenceCode>
-						<Condition><![CDATA[false]]></Condition>
-					</Properties>
-					<Action><![CDATA[double pvHeute = pvWerte[currentDay - 1];
-trace("Tag " + currentDay + " → PV-Ertrag = " + pvHeute + " MWh\n");
-currentDay++;]]></Action>
-				</Event>
-			</Events>
-			<Connectivity>
-				<ExcelFile>
-					<Id>1749624080740</Id>
-					<Name><![CDATA[excelFile]]></Name>
-					<X>300</X><Y>840</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<ResourceReference>
-						<PackageName><![CDATA[ipj_02_simulation]]></PackageName>
-						<ClassName><![CDATA[PV-Realisierte-Erzeugung-2024-daily.xlsx]]></ClassName>
-					</ResourceReference>
-					<SaveInSnapshot>false</SaveInSnapshot>
-					<LoadOnStartup>true</LoadOnStartup>
-					<SaveOnDispose>true</SaveOnDispose>
-				</ExcelFile>
-				<ExcelFile>
-					<Id>1749631255918</Id>
-					<Name><![CDATA[excelFile1]]></Name>
-					<X>620</X><Y>840</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<ResourceReference>
-						<PackageName><![CDATA[ipj_02_simulation]]></PackageName>
-						<ClassName><![CDATA[Strompreise_DayAhead.xlsx]]></ClassName>
-					</ResourceReference>
-					<SaveInSnapshot>false</SaveInSnapshot>
-					<LoadOnStartup>true</LoadOnStartup>
-					<SaveOnDispose>true</SaveOnDispose>
-				</ExcelFile>
-			</Connectivity>
 			<AgentLinks>
 				<AgentLink>
 					<Id>1747209476590</Id>
@@ -1124,7 +1024,7 @@ currentDay++;]]></Action>
     			<TimePlot>
 					<Id>1749019708248</Id>
 					<Name><![CDATA[plot]]></Name>
-					<X>990</X><Y>240</Y>
+					<X>980</X><Y>240</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1196,8 +1096,8 @@ currentDay++;]]></Action>
 						<PointStyle>NONE</PointStyle>
 						<LineWidth>1.0</LineWidth>
 					</DatasetExpression>
-					<SamplesToKeep>5475</SamplesToKeep>
-					<TimeWindowExpression><![CDATA[5475]]></TimeWindowExpression>
+					<SamplesToKeep>100</SamplesToKeep>
+					<TimeWindowExpression><![CDATA[100]]></TimeWindowExpression>
 					<FillAreaUnderLine>false</FillAreaUnderLine>
 					<LabelFormat>MODEL_TIME_UNITS</LabelFormat>
     			</TimePlot>
@@ -1340,81 +1240,11 @@ currentDay++;]]></Action>
 						<PointStyle>NONE</PointStyle>
 						<LineWidth>1.0</LineWidth>
 					</DatasetExpression>
-					<SamplesToKeep>5475</SamplesToKeep>
-					<TimeWindowExpression><![CDATA[5475]]></TimeWindowExpression>
+					<SamplesToKeep>100</SamplesToKeep>
+					<TimeWindowExpression><![CDATA[100]]></TimeWindowExpression>
 					<FillAreaUnderLine>false</FillAreaUnderLine>
 					<LabelFormat>MODEL_TIME_UNITS</LabelFormat>
     			</TimePlot>
-				<Canvas>
-					<Id>1749624062650</Id>
-					<Name><![CDATA[canvas]]></Name>
-					<X>240</X><Y>780</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>	
-					<Width>150</Width>
-					<Height>100</Height>
-					<Rotation>0</Rotation>
-				</Canvas>
-				<Text>
-					<Id>1749629166989</Id>
-					<Name><![CDATA[text]]></Name>
-					<X>1220</X><Y>400</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[Zeit in Tagen]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>10</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
-					<Id>1749629210555</Id>
-					<Name><![CDATA[text2]]></Name>
-					<X>980</X><Y>250</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[Preis in €]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>10</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Canvas>
-					<Id>1749631255674</Id>
-					<Name><![CDATA[canvas1]]></Name>
-					<X>560</X><Y>780</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>	
-					<Width>150</Width>
-					<Height>100</Height>
-					<Rotation>0</Rotation>
-				</Canvas>
 			</Presentation>
 
 				</Level>
@@ -1562,12 +1392,6 @@ currentDay++;]]></Action>
 		<Resource>
 			<Id>1749022720539</Id>
 			<Path><![CDATA[PV-Realisierte-Erzeugung-2024-daily.xlsx]]></Path>
-			<ReferencedFromUserCode>false</ReferencedFromUserCode>
-			<Location>FILE_SYSTEM</Location>
-		</Resource>
-		<Resource>
-			<Id>1749631395996</Id>
-			<Path><![CDATA[Strompreise_DayAhead.xlsx]]></Path>
 			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 			<Location>FILE_SYSTEM</Location>
 		</Resource>
