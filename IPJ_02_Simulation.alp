@@ -268,7 +268,7 @@ int currentDay = 1;]]></AdditionalClassCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties External="false" Constant="false" Array="false">
-						<Formula><![CDATA[Strompreis - (GesamtinvestitionPV + (GesamtWartungskostenPV * 15)) / (InstallierteLeistung * (823.7405223
+						<Formula><![CDATA[Strompreis - (GesamtinvestitionPV / 1.19 + (GesamtWartungskostenPV * 15)) / (InstallierteLeistung * (823.7405223
  * 15))]]></Formula>
 						<Value><![CDATA[0]]></Value>
 						<Color/>
