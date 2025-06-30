@@ -1112,21 +1112,6 @@ int currentDay = 1;]]></AdditionalClassCode>
 					<LineWidth>1</LineWidth>
 					<Delay>false</Delay>
 				</Link>
-				<Link SourceId="1751271159920" TargetId="1751271296971" Polarity="null">
-					<Height>-102.672</Height>
-					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>490</X><Y>-130</Y></Direction>
-					<Id>1751271319549</Id>
-					<Name><![CDATA[PreisDifferenzProKWh - PreisertragPV]]></Name>
-					<X>10</X><Y>650</Y>
-					<Label><X>40</X><Y>-50</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<Color/>
-					<LineWidth>1</LineWidth>
-					<Delay>false</Delay>
-				</Link>
 				<Link SourceId="1747753036727" TargetId="1751271296971" Polarity="null">
 					<Height>-15.984</Height>
 					<PolarityPosition>0.95</PolarityPosition>
@@ -1134,36 +1119,6 @@ int currentDay = 1;]]></AdditionalClassCode>
 					<Id>1751271333392</Id>
 					<Name><![CDATA[BereinigteEnergie - PreisertragPV]]></Name>
 					<X>410</X><Y>335</Y>
-					<Label><X>40</X><Y>-50</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<Color/>
-					<LineWidth>1</LineWidth>
-					<Delay>false</Delay>
-				</Link>
-				<Link SourceId="1749026220221" TargetId="1751271296971" Polarity="null">
-					<Height>41.732</Height>
-					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>-120</X><Y>460</Y></Direction>
-					<Id>1751272987728</Id>
-					<Name><![CDATA[Verkaufspreis - PreisertragPV]]></Name>
-					<X>620</X><Y>60</Y>
-					<Label><X>40</X><Y>-50</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<Color/>
-					<LineWidth>1</LineWidth>
-					<Delay>false</Delay>
-				</Link>
-				<Link SourceId="1747753807441" TargetId="1751271296971" Polarity="null">
-					<Height>20.0</Height>
-					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>490</X><Y>-70</Y></Direction>
-					<Id>1751272993984</Id>
-					<Name><![CDATA[KostenProKWh - PreisertragPV]]></Name>
-					<X>10</X><Y>590</Y>
 					<Label><X>40</X><Y>-50</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1194,6 +1149,21 @@ int currentDay = 1;]]></AdditionalClassCode>
 					<Id>1751294573919</Id>
 					<Name><![CDATA[SonstigeFläche - NutzebarePVFläche]]></Name>
 					<X>10</X><Y>240</Y>
+					<Label><X>40</X><Y>-50</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Color/>
+					<LineWidth>1</LineWidth>
+					<Delay>false</Delay>
+				</Link>
+				<Link SourceId="1747751809821" TargetId="1747757262558" Polarity="null">
+					<Height>89.346</Height>
+					<PolarityPosition>0.95</PolarityPosition>
+					<Direction><X>0</X><Y>-210</Y></Direction>
+					<Id>1751297904567</Id>
+					<Name><![CDATA[InstallierteLeistung - GesamtWartungskostenPV]]></Name>
+					<X>10</X><Y>620</Y>
 					<Label><X>40</X><Y>-50</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
