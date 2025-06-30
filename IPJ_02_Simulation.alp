@@ -178,7 +178,7 @@ int currentDay = 1;]]></AdditionalClassCode>
 					<ShowLabel>true</ShowLabel>
 					<Properties External="false" Constant="true" Array="false">
 						<Formula><![CDATA[FlächeProÜberdachung*FaktorPV]]></Formula>
-						<Value><![CDATA[FlächeProÜberdachung*FaktorPV*AnzahlLadepunkte]]></Value>
+						<Value><![CDATA[(FlächeProÜberdachung*AnzahlLadepunkte + SonstigeFläche)*FaktorPV]]></Value>
 						<Color/>
 					</Properties>
 
@@ -280,15 +280,13 @@ int currentDay = 1;]]></AdditionalClassCode>
 				<Variable Class="AuxVariable">
 					<Id>1747754281572</Id>
 					<Name><![CDATA[VerbrauchProLadesäule]]></Name>
-					<Description><![CDATA[252.24 kWh pro Tag]]></Description>
 					<X>10</X><Y>210</Y>
 					<Label><X>10</X><Y>5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties External="false" Constant="false" Array="false">
-						<Formula><![CDATA[1024.24
-]]></Formula>
+						<Formula><![CDATA[292.24]]></Formula>
 						<Value><![CDATA[0]]></Value>
 						<Color/>
 					</Properties>
@@ -428,7 +426,7 @@ int currentDay = 1;]]></AdditionalClassCode>
 					<ShowLabel>true</ShowLabel>
 					<Properties External="false" Constant="true" Array="false">
 						<Formula><![CDATA[AnzahlPVModule*InvestitionskostenProPV]]></Formula>
-						<Value><![CDATA[AnzahlPVModule*LaufendekostenProPV/365 + InstallierteLeistung*0.77]]></Value>
+						<Value><![CDATA[AnzahlPVModule*LaufendekostenProPV/365 + InstallierteLeistung*0.77/365]]></Value>
 						<Color/>
 					</Properties>
 
@@ -474,7 +472,7 @@ int currentDay = 1;]]></AdditionalClassCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties External="false" Constant="false" Array="false">
-						<Formula><![CDATA[487.5/365]]></Formula>
+						<Formula><![CDATA[750/365]]></Formula>
 						<Value><![CDATA[0]]></Value>
 						<Color/>
 					</Properties>
@@ -508,6 +506,22 @@ int currentDay = 1;]]></AdditionalClassCode>
  * 15))]]></Formula>
 						<Value><![CDATA[Strompreis - (GesamtinvestitionPV / 1.19 + (GesamtWartungskostenPV * 15)) / (InstallierteLeistung * (823.7405223
  * 15))]]></Value>
+						<Color/>
+					</Properties>
+
+				</Variable>
+				<Variable Class="AuxVariable">
+					<Id>1751294617607</Id>
+					<Name><![CDATA[SonstigeFläche]]></Name>
+					<Description><![CDATA[= WechselrichterFläche + Sonstige Fläche]]></Description>
+					<X>10</X><Y>240</Y>
+					<Label><X>15</X><Y>-5</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties External="false" Constant="true" Array="false">
+						<Formula><![CDATA[0]]></Formula>
+						<Value><![CDATA[40+60]]></Value>
 						<Color/>
 					</Properties>
 
@@ -1038,21 +1052,6 @@ int currentDay = 1;]]></AdditionalClassCode>
 					<LineWidth>1</LineWidth>
 					<Delay>false</Delay>
 				</Link>
-				<Link SourceId="1749025444127" TargetId="1749026220221" Polarity="null">
-					<Height>20.0</Height>
-					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>260</X><Y>40</Y></Direction>
-					<Id>1749632589205</Id>
-					<Name><![CDATA[Strompreis - Verkaufspreis]]></Name>
-					<X>360</X><Y>20</Y>
-					<Label><X>40</X><Y>-50</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<Color/>
-					<LineWidth>1</LineWidth>
-					<Delay>false</Delay>
-				</Link>
 				<Link SourceId="1747751809821" TargetId="1747756965495" Polarity="null">
 					<Height>126.046</Height>
 					<PolarityPosition>0.95</PolarityPosition>
@@ -1188,6 +1187,21 @@ int currentDay = 1;]]></AdditionalClassCode>
 					<LineWidth>1</LineWidth>
 					<Delay>false</Delay>
 				</Link>
+				<Link SourceId="1751294617607" TargetId="1747751352767" Polarity="null">
+					<Height>-141.086</Height>
+					<PolarityPosition>0.95</PolarityPosition>
+					<Direction><X>0</X><Y>260</Y></Direction>
+					<Id>1751294573919</Id>
+					<Name><![CDATA[SonstigeFläche - NutzebarePVFläche]]></Name>
+					<X>10</X><Y>240</Y>
+					<Label><X>40</X><Y>-50</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Color/>
+					<LineWidth>1</LineWidth>
+					<Delay>false</Delay>
+				</Link>
 			</Dependences>
 			<Events>
 				<Event>
@@ -1221,7 +1235,9 @@ int currentDay = 1;]]></AdditionalClassCode>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
 					<Action><![CDATA[double pvHeute = pvWerte[currentDay - 1];
+double stromHeute = stromWerte[currentDay - 1];
 trace("EXCEL: Tag " + currentDay + " → PV-Ertrag = " + pvHeute + " MWh\n");
+trace("EXCEL: Tag " + currentDay + " → Strom-Ertrag = " + stromHeute + " €\n");
 currentDay++;]]></Action>
 				</Event>
 			</Events>
@@ -1732,7 +1748,7 @@ currentDay++;]]></Action>
 					<Id>1751264432732</Id>
 					<Expression><![CDATA[my_dataset]]></Expression>
 					<Color>-2448096</Color>
-					<Expression2><![CDATA[PreisertragPV + PreisertragLadesäulen]]></Expression2>
+					<Expression2><![CDATA[PreisertragPV + PreisertragLadesäulen -(InvestitionskostenInsgesamtLadesäulen + WartungskostenProLadesäule*AnzahlLadepunkte*time() + GesamtinvestitionPV + GesamtWartungskostenPV * time() + Personalkosten)]]></Expression2>
 					<Expression2Flag>true</Expression2Flag>
 						<PointStyle>NONE</PointStyle>
 						<LineWidth>1.0</LineWidth>
@@ -1970,11 +1986,11 @@ currentDay++;]]></Action>
 				<RealTimeScale>1.0</RealTimeScale>
 			</PresentationProperties>
 			<ModelTimeProperties>
-				<StopOption><![CDATA[Never]]></StopOption>
+				<StopOption><![CDATA[Stop at specified time]]></StopOption>
 				<InitialDate><![CDATA[1747180800000]]></InitialDate>
 				<InitialTime><![CDATA[0.0]]></InitialTime>
-				<FinalDate><![CDATA[1749859200000]]></FinalDate>
-				<FinalTime><![CDATA[100.0]]></FinalTime>
+				<FinalDate><![CDATA[2219961600000]]></FinalDate>
+				<FinalTime><![CDATA[5472.0]]></FinalTime>
 			</ModelTimeProperties>
 			<BypassInitialScreen>true</BypassInitialScreen>
 		</SimulationExperiment>	
