@@ -325,7 +325,7 @@ int currentDay = 1;]]></AdditionalClassCode>
 				<Variable Class="AuxVariable">
 					<Id>1747755791494</Id>
 					<Name><![CDATA[VerhältnisEnergie]]></Name>
-					<X>1065</X><Y>700</Y>
+					<X>1065</X><Y>720</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -341,7 +341,7 @@ int currentDay = 1;]]></AdditionalClassCode>
 					<Id>1747755853609</Id>
 					<Name><![CDATA[VerhältnisPreis]]></Name>
 					<X>1065</X><Y>750</Y>
-					<Label><X>15</X><Y>-5</Y></Label>
+					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -472,7 +472,7 @@ int currentDay = 1;]]></AdditionalClassCode>
 					<ShowLabel>true</ShowLabel>
 					<Properties External="false" Constant="true" Array="false">
 						<Formula><![CDATA[0]]></Formula>
-						<Value><![CDATA[40+500]]></Value>
+						<Value><![CDATA[40 + 500]]></Value>
 						<Color/>
 					</Properties>
 
@@ -502,6 +502,21 @@ int currentDay = 1;]]></AdditionalClassCode>
 					<ShowLabel>true</ShowLabel>
 					<Properties External="false" Constant="false" Array="false">
 						<Formula><![CDATA[VerbrauchLadesäulenInsgesamt * Verkaufspreis]]></Formula>
+						<Value><![CDATA[0]]></Value>
+						<Color/>
+					</Properties>
+
+				</Variable>
+				<Variable Class="AuxVariable">
+					<Id>1751835365946</Id>
+					<Name><![CDATA[GesamtGewinn]]></Name>
+					<X>1065</X><Y>780</Y>
+					<Label><X>-47</X><Y>20</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties External="false" Constant="false" Array="false">
+						<Formula><![CDATA[GewinnLadesäulen + GewinnPV]]></Formula>
 						<Value><![CDATA[0]]></Value>
 						<Color/>
 					</Properties>
@@ -901,7 +916,7 @@ int currentDay = 1;]]></AdditionalClassCode>
 				<Link SourceId="1747753006710" TargetId="1747755791494" Polarity="null">
 					<Height>0.0</Height>
 					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>90</X><Y>310</Y></Direction>
+					<Direction><X>90</X><Y>330</Y></Direction>
 					<Id>1749023493505</Id>
 					<Name><![CDATA[RealisierterPVErtrag - VerhältnisEnergie]]></Name>
 					<X>975</X><Y>390</Y>
@@ -1096,7 +1111,7 @@ int currentDay = 1;]]></AdditionalClassCode>
 				<Link SourceId="1751302335949" TargetId="1747755791494" Polarity="null">
 					<Height>-66.148</Height>
 					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>540</X><Y>-180</Y></Direction>
+					<Direction><X>540</X><Y>-160</Y></Direction>
 					<Id>1751302401328</Id>
 					<Name><![CDATA[VerbrauchLadesäulenInsgesamt - VerhältnisEnergie]]></Name>
 					<X>525</X><Y>880</Y>
@@ -1393,6 +1408,36 @@ int currentDay = 1;]]></AdditionalClassCode>
 					<LineWidth>1</LineWidth>
 					<Delay>false</Delay>
 				</Link>
+				<Link SourceId="1751301776801" TargetId="1751835365946" Polarity="null">
+					<Height>20.0</Height>
+					<PolarityPosition>0.95</PolarityPosition>
+					<Direction><X>540</X><Y>30</Y></Direction>
+					<Id>1751835352672</Id>
+					<Name><![CDATA[GewinnLadesäulen - GesamtGewinn]]></Name>
+					<X>525</X><Y>750</Y>
+					<Label><X>40</X><Y>-50</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Color/>
+					<LineWidth>1</LineWidth>
+					<Delay>false</Delay>
+				</Link>
+				<Link SourceId="1751271296971" TargetId="1751835365946" Polarity="null">
+					<Height>104.322</Height>
+					<PolarityPosition>0.95</PolarityPosition>
+					<Direction><X>-360</X><Y>240</Y></Direction>
+					<Id>1751835376584</Id>
+					<Name><![CDATA[GewinnPV - GesamtGewinn]]></Name>
+					<X>1425</X><Y>540</Y>
+					<Label><X>40</X><Y>-50</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Color/>
+					<LineWidth>1</LineWidth>
+					<Delay>false</Delay>
+				</Link>
 			</Dependences>
 			<Events>
 				<Event>
@@ -1571,7 +1616,7 @@ currentDay++;]]></Action>
 					<Id>1749024094155</Id>
 					<Expression><![CDATA[my_dataset2]]></Expression>
 					<Color>-65536</Color>
-					<Expression2><![CDATA[GesamtinvestitionPV + GesamtWartungskostenPV * time()]]></Expression2>
+					<Expression2><![CDATA[KostenPV]]></Expression2>
 					<Expression2Flag>true</Expression2Flag>
 						<PointStyle>NONE</PointStyle>
 						<LineWidth>1.0</LineWidth>
@@ -1957,7 +2002,7 @@ currentDay++;]]></Action>
 					<Id>1751264432732</Id>
 					<Expression><![CDATA[my_dataset]]></Expression>
 					<Color>-10496</Color>
-					<Expression2><![CDATA[UmsatzPV + UmsatzLadesäulen -(KostenLadesäulen + GesamtinvestitionPV + GesamtWartungskostenPV * time() + Personalkosten)]]></Expression2>
+					<Expression2><![CDATA[UmsatzPV + UmsatzLadesäulen - KostenLadesäulen - KostenPV - Personalkosten]]></Expression2>
 					<Expression2Flag>true</Expression2Flag>
 						<PointStyle>NONE</PointStyle>
 						<LineWidth>1.0</LineWidth>
