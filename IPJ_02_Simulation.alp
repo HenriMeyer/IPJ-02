@@ -424,8 +424,7 @@ int currentDay = 1;]]></AdditionalClassCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties External="false" Constant="false" Array="false">
-						<Formula><![CDATA[0.6
-]]></Formula>
+						<Formula><![CDATA[0.6]]></Formula>
 						<Value><![CDATA[0]]></Value>
 						<Color/>
 					</Properties>
@@ -435,8 +434,8 @@ int currentDay = 1;]]></AdditionalClassCode>
 					<Id>1749026859634</Id>
 					<Name><![CDATA[WartungskostenProLadesäule]]></Name>
 					<Description><![CDATA[Pro Tag]]></Description>
-					<X>575</X><Y>610</Y>
-					<Label><X>-39</X><Y>-36</Y></Label>
+					<X>575</X><Y>595</Y>
+					<Label><X>-39</X><Y>-29</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -1230,12 +1229,12 @@ int currentDay = 1;]]></AdditionalClassCode>
 					<Delay>false</Delay>
 				</Link>
 				<Link SourceId="1749026859634" TargetId="1751364919609" Polarity="null">
-					<Height>-63.659</Height>
+					<Height>-70.683</Height>
 					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>-210</X><Y>210</Y></Direction>
+					<Direction><X>-210</X><Y>225</Y></Direction>
 					<Id>1751365177481</Id>
 					<Name><![CDATA[WartungskostenProLadesäule - flow1]]></Name>
-					<X>575</X><Y>610</Y>
+					<X>575</X><Y>595</Y>
 					<Label><X>40</X><Y>-50</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1275,12 +1274,12 @@ int currentDay = 1;]]></AdditionalClassCode>
 					<Delay>false</Delay>
 				</Link>
 				<Link SourceId="1749026859634" TargetId="1751301772644" Polarity="null">
-					<Height>-55.951</Height>
+					<Height>-61.032</Height>
 					<PolarityPosition>0.95</PolarityPosition>
-					<Direction><X>-290</X><Y>140</Y></Direction>
+					<Direction><X>-290</X><Y>155</Y></Direction>
 					<Id>1751385259652</Id>
 					<Name><![CDATA[WartungskostenProLadesäule - flow]]></Name>
-					<X>575</X><Y>610</Y>
+					<X>575</X><Y>595</Y>
 					<Label><X>40</X><Y>-50</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1428,8 +1427,6 @@ int currentDay = 1;]]></AdditionalClassCode>
 					</Properties>
 					<Action><![CDATA[double pvHeute = pvWerte[currentDay - 1];
 double stromHeute = stromWerte[currentDay - 1];
-trace("EXCEL: Tag " + currentDay + " → PV-Ertrag = " + pvHeute + " MWh\n");
-trace("EXCEL: Tag " + currentDay + " → Strom-Ertrag = " + stromHeute + " €\n");
 currentDay++;]]></Action>
 				</Event>
 			</Events>
